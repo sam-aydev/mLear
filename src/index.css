@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .active{
+    @apply sm:bg-slate-600 sm:text-white sm:py-2 sm:px-3 sm:rounded-xl sm:text-center
+} */
