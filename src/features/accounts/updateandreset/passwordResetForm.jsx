@@ -4,7 +4,7 @@ import Error from "../../../ui/Error";
 import { useResetPassword } from "../useResetPassword";
 
 export default function PasswordResetForm(){
-    const [email, setEmail] = useState("samueladetunji000@gmail.com");
+    const [email, setEmail] = useState("");
     const { isPending, reset, error } = useResetPassword();
 
     function handleSubmit(e){

@@ -4,8 +4,8 @@ import Error from "../../../ui/Error";
 import { useUpdatePassword } from "../useUpdatePassword";
 
 export default function UpdatePassword(){
-    const [password, setPassword] = useState("samueladetunji000@gmail.com");
-    const [confirmPassword, setConfirmPassword] = useState("samueladetunji000@gmail.com");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const { isPending, update, error } = useUpdatePassword();
 
     function handleSubmit(e){

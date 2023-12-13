@@ -5,8 +5,8 @@ import { useLogin } from "../useLogin";
 import Error from "../../../ui/Error";
 
 export default function TeacherLogin(){
-    const [email, setEmail] = useState("samueladetunji000@gmail.com");
-    const [password, setPassword] = useState("*Samco123#");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const { isPending, Login, error } = useLogin()
 
     function handleSubmit(e){
