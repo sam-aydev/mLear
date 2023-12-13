@@ -32,7 +32,7 @@ export default function NavMobileComp({menu, setMenu}){
                   <p>About</p>
                 </div>
                 
-                <div className='px-8 flex flex-col '>
+                <div className='items-center flex flex-col '>
                   <Link to='/login'>
                     <button className=' py-2 mt-6 px-20 '>Login</button>
                   </Link>
