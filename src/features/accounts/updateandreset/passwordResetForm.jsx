@@ -39,7 +39,10 @@ export default function PasswordResetForm(){
                             <form onSubmit={handleSubmit} className="space-y-2 mt-6 ">
                                 <div>
                                     <label className="block font-semibold">Email:</label>
-                                    <input disabled={isPending} id="email" value={email} onChange={(e)=>setEmail(e.target.value)} type="email" placeholder="johndoe@work.com" className="border-2 border-black w-full py-2 rounded px-2"/>
+                                    <input disabled={isPending} id="email" value={email} onChange={(e)=>{
+                                        setEmail(e.target.value);
+                                        setNoEmail(false);
+                                        }} type="email" placeholder="johndoe@work.com" className="border-2 border-black w-full py-2 rounded px-2"/>
                                     {noemail && <p className="text-red-600 font-semibold">Please Fill With Correct Email!.</p>}
                                 </div>
 
