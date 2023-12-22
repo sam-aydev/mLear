@@ -5,12 +5,18 @@ import { useUpdatePassword } from "../useUpdatePassword";
 
 export default function UpdatePassword(){
     const [password, setPassword] = useState("");
+    const [nopassword, setNoPassword] = useState(false);
     const [confirmPassword, setConfirmPassword] = useState("");
     const { isPending, update, error } = useUpdatePassword();
 
     function handleSubmit(e){
         e.preventDefault()
-        if(password !== confirmPassword) return;   
+        if(password !== confirmPassword) return;
+        
+        if(!password || !confirmPassword) {
+            setNoPassword(true);
+            return;
+        }
         update({password}, {
             onSettled: () =>{
                 setPassword("")
@@ -35,6 +41,7 @@ export default function UpdatePassword(){
                         </div>
                         <div>
                             {error && <Error>There was error loading this data. Try Again!</Error>}
+                            {nopassword && <p className="text-red-600 font-semibold bg-white px-4 py-2 mt-9">Please Fill With Correct Password !</p>}
                             <form onSubmit={handleSubmit} className="space-y-2 mt-6 ">
                                 <div>
                                     <label className="block font-semibold">Password:</label>

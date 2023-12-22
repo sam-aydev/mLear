@@ -6,12 +6,23 @@ import Error from "../../../ui/Error";
 
 export default function TeacherLogin(){
     const [email, setEmail] = useState("");
+    const [noemail, setNoEmail] = useState(false);
     const [password, setPassword] = useState("");
+    const [nopassword, setNoPassword] = useState(false);
     const { isPending, Login, error } = useLogin()
 
     function handleSubmit(e){
-        e.preventDefault()
-        if(!email || !password) return;   
+        e.preventDefault();
+        if(!email) {
+            setNoEmail(true);
+            return;
+        };
+   
+        if(!password){
+            setNoPassword(true);
+            return;
+        };
+
         Login({email, password}, {
             onSettled: () => {
             setEmail("");
@@ -39,12 +50,20 @@ export default function TeacherLogin(){
                             <form onSubmit={handleSubmit} className="space-y-2 mt-6 ">
                                 <div>
                                     <label className="block font-semibold">Email:</label>
-                                    <input disabled={isPending} id="email" value={email} onChange={(e)=>setEmail(e.target.value)} type="email" placeholder="johndoe@work.com" className="border-2 border-black w-full py-2 rounded px-2"/>
+                                    <input disabled={isPending} id="email" value={email} onChange={(e)=>{
+                                        setNoEmail(false)
+                                        setEmail(e.target.value)
+                                        }} type="email" placeholder="johndoe@work.com" className="border-2 border-black w-full py-2 rounded px-2"/>
+                                    {noemail && <p className="text-red-600 font-semibold">Please Fill With Correct Email!.</p>}
                                 </div>
 
                                 <div>
                                     <label  className="block font-semibold">Password:</label>
-                                    <input disabled={isPending} value={password} onChange={(e)=> setPassword(e.target.value)} type="password" placeholder="abc123*" className="border-2 border-black w-full py-2 rounded px-2"/>
+                                    <input disabled={isPending} value={password} onChange={(e)=> {
+                                        setPassword(e.target.value)
+                                        setNoPassword(false)
+                                        }} type="password" placeholder="abc123*" className="border-2 border-black w-full py-2 rounded px-2"/>
+                                    {nopassword && <p className="text-red-600 font-semibold">Please Fill With Correct Password!.</p>}
                                 </div>
                                 
                                 <div className="text-center">

@@ -5,11 +5,15 @@ import { useResetPassword } from "../useResetPassword";
 
 export default function PasswordResetForm(){
     const [email, setEmail] = useState("");
+    const [noemail, setNoEmail] = useState(false);
     const { isPending, reset, error } = useResetPassword();
 
     function handleSubmit(e){
         e.preventDefault()
-        if(!email) return;   
+        if(!email) {
+            setNoEmail(true);
+            return;
+        };   
         reset({email}, {
             onSettled: () => setEmail("")
         })
@@ -35,6 +39,7 @@ export default function PasswordResetForm(){
                                 <div>
                                     <label className="block font-semibold">Email:</label>
                                     <input disabled={isPending} id="email" value={email} onChange={(e)=>setEmail(e.target.value)} type="email" placeholder="johndoe@work.com" className="border-2 border-black w-full py-2 rounded px-2"/>
+                                    {noemail && <p className="text-red-600 font-semibold">Please Fill With Correct Email!.</p>}
                                 </div>
 
                                 <div className="text-center">
