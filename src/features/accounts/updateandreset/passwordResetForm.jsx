@@ -15,7 +15,8 @@ export default function PasswordResetForm(){
             return;
         };   
         reset({email}, {
-            onSettled: () => setEmail("")
+            onSettled: () => setEmail("");
+            setNoEmail(false);
         })
 
        
