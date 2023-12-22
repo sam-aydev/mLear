@@ -20,7 +20,8 @@ export default function UpdatePassword(){
         update({password}, {
             onSettled: () =>{
                 setPassword("")
-                setConfirmPassword("")
+                setConfirmPassword("");
+                setNoPassword(false);
             }
         })
 
